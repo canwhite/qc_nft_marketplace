@@ -8,12 +8,13 @@ import "@openzeppelin/contracts/utils/Base64.sol";
 contract BadgeToken is ERC721 {
      uint256 private _currentTokenId = 0; //tokenId will start from 1
 
-     function mintTo(address _to) public {
-        uint256 newTokenId = _getNextTokenId();
-        _mint(_to, newTokenId);
-        _incrementTokenId();
-    }
 
+    constructor(
+        string memory _name,
+        string memory _symbol
+    ) ERC721(_name, _symbol) {
+
+    }
     function mintTo(address _to) public {
         uint256 newTokenId = _getNextTokenId();
         _mint(_to, newTokenId);
@@ -56,6 +57,15 @@ contract BadgeToken is ERC721 {
     // 2. 优化 SVG 图片设计
     // 3. 添加对 tokenId 存在性的验证
     function  tokenURI(uint256 tokenId) override public pure returns(string memory) {
+        /*
+        <svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'>
+            <style>.base { fill: white; font-family: serif; font-size: 300px; }</style>
+            <rect width='100%' height='100%' fill='brown' />
+                <text x='100' y='260' class='base'>
+                1
+                </text>
+        </svg>
+        */
         string[3] memory parts;
         parts[0] = "<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'><style>.base { fill: white; font-family: serif; font-size: 300px; }</style><rect width='100%' height='100%' fill='brown' /><text x='100' y='260' class='base'>";
         parts[1] = Strings.toString(tokenId);
@@ -63,7 +73,7 @@ contract BadgeToken is ERC721 {
 
       
         string memory svgOutput = Base64.encode(bytes(abi.encodePacked(parts[0], parts[1], parts[2])));
-        string tokenIdString = Strings.toString(tokenId), 
+        string memory tokenIdString = Strings.toString(tokenId);
         //get a json string
         
         string memory json = string(abi.encodePacked(
@@ -83,7 +93,7 @@ contract BadgeToken is ERC721 {
         // 这样可以直接在浏览器中解析和显示这个 JSON 数据
         return string(abi.encodePacked("data:application/json;base64,", Base64.encode(bytes(json))));
     }
-    
+
 }
 
 
