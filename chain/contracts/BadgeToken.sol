@@ -16,9 +16,11 @@ contract BadgeToken is ERC721 {
 
     }
     function mintTo(address _to) public {
+        //这里获取的是当前值+1.但是此时并未修改
         uint256 newTokenId = _getNextTokenId();
         _mint(_to, newTokenId);
-        // _incrementTokenId();        
+        //之后再修改的
+        _incrementTokenId();        
     }   
 
     // 在 Solidity 中，以下划线 _ 开头命名的方法或变量通常表示它们是私有的（private）或内部的（internal）
