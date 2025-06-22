@@ -14,8 +14,10 @@
     "start": "yarn hardhat node",
     "test": "yarn hardhat test",
     "compile": "yarn hardhat compile",
+    "console": "yarn hardhat console --network localhost",
     "ignition_deploy": "yarn hardhat ignition deploy ./ignition/modules/deploy_classtoken.ts --network localhost",
-    "normal_deploy": "yarn hardhat run ./scripts/deploy_classtoken.ts --network localhost"
+    "cls_deploy": "yarn hardhat run ./scripts/deploy_classtoken.ts --network localhost",
+    "bt_deploy": "yarn hardhat run ./scripts/deploy_badgetoken.ts --network localhost"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
