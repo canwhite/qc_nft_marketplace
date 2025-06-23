@@ -5,6 +5,7 @@ pragma solidity ^0.8.28;
 library Counters {
     // Define a Counter struct to hold the current count
     struct Counter {
+        //unit值默认是0
         uint256 _value; // The current counter value
     }
     // get the current value of the counter
