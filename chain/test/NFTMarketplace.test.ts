@@ -262,7 +262,7 @@ describe("NFTMarketplace", function () {
     txreceipt = await txresponse.wait();
     // 计算交易消耗的gas费用 = 使用的gas数量 * 实际支付的gas价格
     // 注意effectiveGasPrice可能不存在
-    console.log("Full transaction receipt:", txreceipt);
+    // console.log("Full transaction receipt:", txreceipt);
     const gasPrice = txreceipt.gasPrice || txreceipt.effectiveGasPrice;
     if (!gasPrice) {
       throw new Error("Cannot determine gas price from transaction receipt");
