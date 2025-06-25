@@ -18,7 +18,8 @@
     "ignition_deploy": "yarn hardhat ignition deploy ./ignition/modules/deploy_classtoken.ts --network localhost",
     "cls_deploy": "yarn hardhat run ./scripts/deploy_classtoken.ts --network localhost",
     "bt_deploy": "yarn hardhat run ./scripts/deploy_badgetoken.ts --network localhost",
-    "play": "yarn hardhat run ./scripts/playMarket.ts"
+    "play": "yarn hardhat run ./scripts/playMarket.ts",
+    "prepare": "yarn hardhat run ./scripts/prepare.ts --network localhost"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
